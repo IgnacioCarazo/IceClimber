@@ -10,7 +10,6 @@ public class DesktopLauncher {
 		config.foregroundFPS = 60;
 		config.height = IceClimber.HEIGHT;
 		config.width = IceClimber.WIDTH;
-		config.resizable = false;
 		config.forceExit = false;
 		new LwjglApplication(new IceClimber(), config);
 	}
