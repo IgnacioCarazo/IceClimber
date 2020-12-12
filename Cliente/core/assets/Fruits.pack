@@ -1,0 +1,75 @@
+
+Fruits.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+fruit
+  rotate: false
+  xy: 1, 100
+  size: 17, 19
+  orig: 17, 19
+  offset: 0, 0
+  index: 2
+fruit
+  rotate: false
+  xy: 1, 79
+  size: 16, 19
+  orig: 16, 19
+  offset: 0, 0
+  index: 1
+fruit
+  rotate: false
+  xy: 19, 79
+  size: 12, 19
+  orig: 12, 19
+  offset: 0, 0
+  index: 3
+fruit
+  rotate: false
+  xy: 1, 60
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: 6
+fruit
+  rotate: false
+  xy: 1, 40
+  size: 15, 18
+  orig: 15, 18
+  offset: 0, 0
+  index: 4
+fruit
+  rotate: false
+  xy: 18, 41
+  size: 13, 17
+  orig: 13, 17
+  offset: 0, 0
+  index: 5
+fruit
+  rotate: false
+  xy: 1, 21
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: 9
+fruit
+  rotate: false
+  xy: 1, 2
+  size: 14, 17
+  orig: 14, 17
+  offset: 0, 0
+  index: 7
+fruit
+  rotate: false
+  xy: 18, 20
+  size: 12, 19
+  orig: 12, 19
+  offset: 0, 0
+  index: 10
+fruit
+  rotate: false
+  xy: 17, 1
+  size: 12, 17
+  orig: 12, 17
+  offset: 0, 0
+  index: 8

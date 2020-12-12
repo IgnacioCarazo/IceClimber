@@ -8,8 +8,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.foregroundFPS = 60;
-		config.height = IceClimber.HEIGHT;
-		config.width = IceClimber.WIDTH;
+		config.height = IceClimber.MENUHEIGHT;
+		config.width = IceClimber.MENUWIDTH;
 		config.forceExit = false;
 		new LwjglApplication(new IceClimber(), config);
 	}

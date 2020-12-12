@@ -3,192 +3,80 @@ Popo_Nana_and_Enemies.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-bear_right
+tero_left
   rotate: false
-  xy: 1, 28
-  size: 81, 35
-  orig: 81, 35
+  xy: 1, 43
+  size: 106, 20
+  orig: 106, 20
   offset: 0, 0
   index: -1
 nana_jump_left
   rotate: false
-  xy: 1, 1
+  xy: 1, 16
+  size: 94, 25
+  orig: 94, 25
+  offset: 0, 0
+  index: -1
+popo_jump_left
+  rotate: false
+  xy: 109, 38
   size: 94, 25
   orig: 94, 25
   offset: 0, 0
   index: -1
 bear_left
   rotate: false
-  xy: 84, 28
+  xy: 97, 1
   size: 80, 35
   orig: 80, 35
   offset: 0, 0
   index: -1
-popo_jump_left
-  rotate: false
-  xy: 97, 1
-  size: 94, 25
-  orig: 94, 25
-  offset: 0, 0
-  index: -1
-popo_hammer_right
-  rotate: false
-  xy: 166, 34
-  size: 80, 29
-  orig: 80, 29
-  offset: 0, 0
-  index: -1
 popo_hammer_left
   rotate: false
-  xy: 193, 3
+  xy: 205, 34
   size: 78, 29
   orig: 78, 29
   offset: 0, 0
   index: -1
 nana_hammer_left
   rotate: false
-  xy: 248, 34
+  xy: 285, 34
   size: 75, 29
   orig: 75, 29
   offset: 0, 0
   index: -1
-nana_hammer_right
-  rotate: false
-  xy: 273, 3
-  size: 74, 29
-  orig: 74, 29
-  offset: 0, 0
-  index: -1
-popo_win
-  rotate: false
-  xy: 325, 35
-  size: 45, 28
-  orig: 45, 28
-  offset: 0, 0
-  index: -1
-popo_sad
-  rotate: false
-  xy: 349, 5
-  size: 38, 28
-  orig: 38, 28
-  offset: 0, 0
-  index: -1
-nana_win
-  rotate: false
-  xy: 372, 37
-  size: 46, 26
-  orig: 46, 26
-  offset: 0, 0
-  index: -1
-nana_sad
-  rotate: false
-  xy: 389, 9
-  size: 37, 26
-  orig: 37, 26
-  offset: 0, 0
-  index: -1
-nana_jump_right
-  rotate: false
-  xy: 420, 38
-  size: 93, 25
-  orig: 93, 25
-  offset: 0, 0
-  index: -1
-popo_jump_right
-  rotate: false
-  xy: 428, 11
-  size: 93, 25
-  orig: 93, 25
-  offset: 0, 0
-  index: -1
 popo_walk_left
   rotate: false
-  xy: 515, 38
+  xy: 362, 38
   size: 75, 25
   orig: 75, 25
   offset: 0, 0
   index: -1
-popo_walk_right
+bird_left
   rotate: false
-  xy: 523, 11
-  size: 75, 25
-  orig: 75, 25
+  xy: 439, 44
+  size: 64, 19
+  orig: 64, 19
   offset: 0, 0
   index: -1
 nana_walk_left
   rotate: false
-  xy: 592, 40
+  xy: 362, 13
   size: 75, 23
   orig: 75, 23
   offset: 0, 0
   index: -1
-nana_walk_right
-  rotate: false
-  xy: 600, 16
-  size: 76, 22
-  orig: 76, 22
-  offset: 0, 0
-  index: -1
 yeti_left
   rotate: false
-  xy: 669, 42
-  size: 79, 21
-  orig: 79, 21
-  offset: 0, 0
-  index: -1
-yeti_right
-  rotate: false
-  xy: 678, 19
+  xy: 179, 11
   size: 79, 21
   orig: 79, 21
   offset: 0, 0
   index: -1
 seal_left
   rotate: false
-  xy: 750, 42
+  xy: 260, 11
   size: 78, 21
   orig: 78, 21
-  offset: 0, 0
-  index: -1
-ice_falling
-  rotate: false
-  xy: 678, 2
-  size: 34, 15
-  orig: 34, 15
-  offset: 0, 0
-  index: -1
-tero_left
-  rotate: false
-  xy: 759, 20
-  size: 106, 20
-  orig: 106, 20
-  offset: 0, 0
-  index: -1
-bird_right
-  rotate: false
-  xy: 830, 43
-  size: 63, 20
-  orig: 63, 20
-  offset: 0, 0
-  index: -1
-tero_right
-  rotate: false
-  xy: 895, 45
-  size: 108, 18
-  orig: 108, 18
-  offset: 0, 0
-  index: -1
-seal_right
-  rotate: false
-  xy: 867, 22
-  size: 79, 19
-  orig: 79, 19
-  offset: 0, 0
-  index: -1
-bird_left
-  rotate: false
-  xy: 867, 1
-  size: 64, 19
-  orig: 64, 19
   offset: 0, 0
   index: -1

@@ -2,6 +2,7 @@ package com.lenguajes.iceclimber.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.lenguajes.iceclimber.IceClimber;
@@ -25,6 +26,7 @@ public class MainMenuScreen implements Screen {
     Texture onePlayerButton;
     Texture twoPlayersButton;
 
+    private Music music;
 
     public MainMenuScreen(IceClimber game) {
         this.game = game;
@@ -33,6 +35,10 @@ public class MainMenuScreen implements Screen {
         exitButton = new Texture("exit.png");
         onePlayerButton = new Texture("1_player.png");
         twoPlayersButton =  new Texture("2_players.png");
+
+        music = IceClimber.manager.get("audio/music/game_start.mp3",Music.class);
+        music.setLooping(false);
+        music.play();
     }
 
     @Override
@@ -50,7 +56,7 @@ public class MainMenuScreen implements Screen {
         game.batch.draw(logo,150, 1100);
         // play button
         if (Gdx.input.getX() > PLAY_BUTTON_X && Gdx.input.getX() < 625
-                && IceClimber.HEIGHT - Gdx.input.getY() > PLAY_BUTTON_Y && IceClimber.HEIGHT - Gdx.input.getY() < PLAY_BUTTON_Y + 100) {
+                && IceClimber.MENUHEIGHT - Gdx.input.getY() > PLAY_BUTTON_Y && IceClimber.MENUHEIGHT - Gdx.input.getY() < PLAY_BUTTON_Y + 100) {
                 game.batch.draw(playButton, PLAY_BUTTON_X,PLAY_BUTTON_Y + 10);
             if (Gdx.input.isTouched() && players != 0) {
                 game.setScreen(new GameScreen(game));
@@ -60,7 +66,7 @@ public class MainMenuScreen implements Screen {
         }
         // 1 player button
         if (Gdx.input.getX() > ONE_PLAYER_BUTTON_X && Gdx.input.getX() < 800
-                && IceClimber.HEIGHT - Gdx.input.getY() > ONE_PLAYER_BUTTON_Y && IceClimber.HEIGHT - Gdx.input.getY() < ONE_PLAYER_BUTTON_Y + 100) {
+                && IceClimber.MENUHEIGHT - Gdx.input.getY() > ONE_PLAYER_BUTTON_Y && IceClimber.MENUHEIGHT - Gdx.input.getY() < ONE_PLAYER_BUTTON_Y + 100) {
             game.batch.draw(onePlayerButton, ONE_PLAYER_BUTTON_X,ONE_PLAYER_BUTTON_Y + 10);
             if (Gdx.input.isTouched()) {
                 players = 1;
@@ -70,7 +76,7 @@ public class MainMenuScreen implements Screen {
         }
         // 2 player button
         if (Gdx.input.getX() > TWO_PLAYER_BUTTON_X && Gdx.input.getX() < 800
-                && IceClimber.HEIGHT - Gdx.input.getY() > TWO_PLAYER_BUTTON_Y && IceClimber.HEIGHT - Gdx.input.getY() < TWO_PLAYER_BUTTON_Y + 100) {
+                && IceClimber.MENUHEIGHT - Gdx.input.getY() > TWO_PLAYER_BUTTON_Y && IceClimber.MENUHEIGHT - Gdx.input.getY() < TWO_PLAYER_BUTTON_Y + 100) {
             game.batch.draw(twoPlayersButton, TWO_PLAYER_BUTTON_X,TWO_PLAYER_BUTTON_Y + 10);
             if (Gdx.input.isTouched()) {
                 players = 2;
@@ -80,7 +86,7 @@ public class MainMenuScreen implements Screen {
         }
         // exit button
         if (Gdx.input.getX() > EXIT_BUTTON_X && Gdx.input.getX() < 625
-                && IceClimber.HEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y && IceClimber.HEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + 100) {
+                && IceClimber.MENUHEIGHT - Gdx.input.getY() > EXIT_BUTTON_Y && IceClimber.MENUHEIGHT - Gdx.input.getY() < EXIT_BUTTON_Y + 100) {
             game.batch.draw(exitButton, EXIT_BUTTON_X,EXIT_BUTTON_Y + 10);
             if (Gdx.input.isTouched()) {
                 Gdx.app.exit();

@@ -20,21 +20,28 @@ public class Hud implements Disposable {
     private Viewport viewport;
 
 
-    private int popoScore;
-    private int nanaScore;
+    private static int popoScore;
+    private static int nanaScore;
+    private static int popoLives;
+    private static int nanaLives;
 
-    Label poposcoreLabel;
-    Label nanascoreLabel;
+    private static Label poposcoreLabel;
+    private static Label nanascoreLabel;
+    private static Label popoLivesLabel;
+    private static Label nanaLivesLabel;
 
-    Label popoLabel;
-    Label nanaLabel;
+    private Label livesLabel;
+    private Label popoLabel;
+    private Label nanaLabel;
 
     public Hud(SpriteBatch sb) {
 
         popoScore = 0;
         nanaScore = 0;
+        popoLives = 5;
+        nanaLives = 5;
 
-        viewport = new FitViewport(IceClimber.WIDTH,IceClimber.HEIGHT, new OrthographicCamera());
+        viewport = new FitViewport(IceClimber.GAMEWIDTH,IceClimber.GAMEHEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
         Table table = new Table();
@@ -44,22 +51,32 @@ public class Hud implements Disposable {
 
         poposcoreLabel = new Label(String.format("%06d", popoScore), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         nanascoreLabel = new Label(String.format("%06d", nanaScore), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        popoLivesLabel = new Label(String.format("%01d", popoLives), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        nanaLivesLabel = new Label(String.format("%01d", nanaLives), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 
         popoLabel = new Label("POPO", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         nanaLabel = new Label("NANA", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        livesLabel = new Label("LIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+
 
 
         if (MainMenuScreen.players == 1) {
             table.add(popoLabel).expandX().padTop(10);
+            table.add(livesLabel).expandX().padTop(10);
             table.row();
             table.add(poposcoreLabel).expandX();
+            table.add(popoLivesLabel).expandX();
         } else {
             table.add(popoLabel).expandX().padTop(10);
+            table.add(livesLabel).expandX().padTop(10);
             table.add(nanaLabel).expandX().padTop(10);
+            table.add(livesLabel).expandX().padTop(10);
             table.row();
             table.add(poposcoreLabel).expandX();
+            table.add(popoLivesLabel).expandX();
             table.add(nanascoreLabel).expandX();
+            table.add(nanaLivesLabel).expandX();
         }
 
 
@@ -67,6 +84,25 @@ public class Hud implements Disposable {
         stage.addActor(table);
 
 
+    }
+
+    public static void addScorePopo(int value) {
+        popoScore += value;
+        poposcoreLabel.setText(String.format("%06d", popoScore));
+    }
+
+    public static void addScoreNana(int value) {
+        nanaScore += value;
+        nanascoreLabel.setText(String.format("%06d", nanaScore));
+    }
+
+    public static void removeLivePopo(int value) {
+        popoLives -= value;
+        popoLivesLabel.setText(String.format("%01d", popoLives));
+    }
+    public static void removeLiveNana(int value) {
+        popoLives -= value;
+        nanaLivesLabel.setText(String.format("%01d", nanaLives));
     }
 
     @Override
