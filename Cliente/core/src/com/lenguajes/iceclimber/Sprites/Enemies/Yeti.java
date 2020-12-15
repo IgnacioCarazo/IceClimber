@@ -23,13 +23,8 @@ public class Yeti extends Enemy{
 
     public Yeti(GameScreen screen, float floor, boolean facingLeft) {
         super(screen, floor-20, facingLeft);
-        int x;
-        // Se settea la posicion en x dependiendo de hacia que direccion se le dice que vaya
-        if (facingLeft) {
-            x = 350;
-        } else {
-            x = 0;
-        }
+
+        // define su velocidad dependiendo de hacia donde esta viendo
         if (facingLeft) {
             velocity = new Vector2(-0.3f, 0);
         } else {

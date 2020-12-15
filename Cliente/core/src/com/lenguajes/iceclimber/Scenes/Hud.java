@@ -15,6 +15,10 @@ import com.lenguajes.iceclimber.Screens.MainMenuScreen;
 
 import java.awt.*;
 
+
+/**
+ * La clase Hud  se utiliza para dibujar en pantalla lo que coresponde a las vidas y el score de los jugadores
+ */
 public class Hud implements Disposable {
     public Stage stage;
     private Viewport viewport;
@@ -34,6 +38,11 @@ public class Hud implements Disposable {
     private Label popoLabel;
     private Label nanaLabel;
 
+
+    /**
+     * Constructor de la clase
+     * @param sb es el sprite batch en el que se dibujan los labels de score,lives y sus respectivos valores
+     */
     public Hud(SpriteBatch sb) {
 
         popoScore = 0;

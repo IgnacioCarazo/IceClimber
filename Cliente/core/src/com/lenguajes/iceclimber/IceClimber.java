@@ -11,13 +11,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class IceClimber extends Game {
 
-	// Dimensiones de la ventana
+	// Dimensiones de la ventana del menu
 	public static final int MENUWIDTH = 1000;
 	public static final int MENUHEIGHT = 1400;
 
+	// Dimensiones de la ventana del juego
 	public static final int GAMEWIDTH = 320;
 	public static final int GAMEHEIGHT = 500;
 
+	//PixelsPerMeter
 	public static final float PPM = 100;
 
 	//Box2D collision bits

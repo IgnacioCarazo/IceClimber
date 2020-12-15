@@ -24,7 +24,7 @@ public class Bird extends Enemy {
         super(screen, floor, facingleft);
         this.facingLeft = facingleft;
 
-
+        // define su velocidad dependiendo de hacia donde esta viendo
         if (facingLeft) {
 
             birdVelocity = new Vector2(-0.3f, 0.1655599999f);

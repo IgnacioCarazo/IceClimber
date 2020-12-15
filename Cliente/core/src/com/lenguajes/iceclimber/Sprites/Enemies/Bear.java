@@ -25,6 +25,7 @@ public class Bear extends Enemy{
         super(screen, floor-20, facingLeft);
         this.facingLeft = facingLeft;
 
+        // define su velocidad dependiendo de hacia donde esta viendo
         if (facingLeft) {
             velocity = new Vector2(-0.3f, 0);
         } else {

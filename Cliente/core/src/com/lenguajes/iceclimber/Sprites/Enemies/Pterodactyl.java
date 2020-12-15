@@ -24,7 +24,7 @@ public class Pterodactyl extends Enemy{
     public Pterodactyl(GameScreen screen, float floor, boolean facingLeft) {
         super(screen, floor, facingLeft);
 
-
+        // define su velocidad dependiendo de hacia donde esta viendo
         if (facingLeft) {
             birdVelocity = new Vector2(-0.3f, 0.1555599999f);
         } else {

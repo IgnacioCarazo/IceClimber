@@ -7,6 +7,10 @@ import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
 
+/**
+ * La clase brick es la correspondiente a aquellos bloques que se pueden romper por algun personaje.
+ * Al inicializar el mapa en la clase GameScreen se inicializan todos lo bloques dentro del mapa
+ */
 public class Brick extends InteractiveTileObject{
     public Brick(GameScreen screen, Rectangle bounds) {
         super(screen, bounds);

@@ -29,13 +29,19 @@ import sun.rmi.rmic.Main;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * La clase GameScreen que implemente Screen siendo esta una clase predeterminada de la libreria
+ * libgdx se utiliza como la pantalla del juego principal, donde basicamente ocurre todo
+ */
 public class GameScreen implements Screen {
 
+    // variables finales
     public static final float SPEED = 200;
     public static final float ANIMATION_SPEED = 0.5f;
     public static final int PLAYER_PIXEL_WIDTH = 20;
     public static final int PLAYER_PIXEL_HEIGHT = 30;
-    public float DELTATIME;
+
+
     IceClimber game;
     private TextureAtlas atlas;
     private TextureAtlas fruitAtlas;
@@ -46,19 +52,20 @@ public class GameScreen implements Screen {
     private Viewport gameport;
     private Hud hud;
 
-    //box 2d variables
+    //variables de box 2d
     private World world;
     private Box2DDebugRenderer b2dr;
 
-    //tiled map variables
+    //variables del tile map
     private TmxMapLoader maploader;
     private TiledMap map;
     private OrthogonalTiledMapRenderer renderer;
 
-    //players
+    //jugadores
     private Popo popoPlayer;
     private Nana nanaPlayer;
 
+    //musica del juego
     private Music music;
 
 
@@ -69,11 +76,16 @@ public class GameScreen implements Screen {
     public LinkedBlockingQueue<FruitDef> fruitsToSpawn;
     private Array<Fruit> fruits;
 
-    // constructor de GameScreen
+    /**
+     * Constructor de la clase GameScreen. Aqui se inicializa lo necesario para que se inicie el juego
+     * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
+     */
     public GameScreen(IceClimber game) {
         this.game = game;
+        // Los atlas se utilizan para hacer las animaciones de los sprites
         atlas = new TextureAtlas("Popo_Nana_and_Enemies.pack");
         fruitAtlas = new TextureAtlas("Fruits.pack");
+        // La camara y el gameport que se utilizan para mostrar el juego
         gamecam = new OrthographicCamera();
         gameport = new FitViewport(IceClimber.GAMEWIDTH / IceClimber.PPM, IceClimber.GAMEHEIGHT / IceClimber.PPM, gamecam);
         hud = new Hud(game.batch);
@@ -83,22 +95,27 @@ public class GameScreen implements Screen {
         map = maploader.load("iceclimber.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1 / IceClimber.PPM);
 
+        // inicializa la musica
         music = IceClimber.manager.get("audio/music/ice_climber.mp3",Music.class);
         music.setLooping(true);
         music.play();
 
-        //coloca la posicion de la camara
+        //coloca la posicion de la camara e inicializa algunas variables necesarias para el funcionamiento del juego
         gamecam.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
-        System.out.println(gameport.getWorldHeight() / 2);
-        System.out.println(gameport.getWorldWidth() / 2);
+
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
+
+        // Estos arrays contienen a todos loas actores que hay en escena de su respectiva clase
         enemies = new Array<Enemy>();
         fruits = new Array<Fruit>();
+        // Estas dos variables funcionan como una lista de espera para los enemigos o frutas que se desean crear
         enemiesToSpawn = new LinkedBlockingQueue<>();
         fruitsToSpawn = new LinkedBlockingQueue<>();
         new B2WorldCreator(this);
 
+
+        //Aqui se verifica si el juego va a tener un jugador o dos
         if (MainMenuScreen.players == 1) {
             popoPlayer = new Popo(this);
         } else {
@@ -112,10 +129,18 @@ public class GameScreen implements Screen {
         yeti = new Yeti(this, floor * 10, true);
     }
 
+    /**
+     * Esta funcion permite crear enemigos en el GameScreen.
+     * @param enemydef Este enemydef es la definicion de un enemigo que se desea crear en pantalla y se agrega a enemiesToSpawn.
+     */
     public void spawnEnemy(EnemyDef enemydef) {
         enemiesToSpawn.add(enemydef);
     }
 
+    /**
+     * Esta funcion revisa si hay algo nuevo en enemiesToSpawn y si encuentra que no esta vacia revisa a que tipo de
+     * enemigo pertenece y lo ingresa al array de enemies siendo de su clase correspondiente.
+     */
     public void handleSpawningEnemies() {
         if (!enemiesToSpawn.isEmpty()) {
             EnemyDef edef = enemiesToSpawn.poll();
@@ -133,10 +158,19 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Esta funcion permite crear frutas en el GameScreen.
+     * @param fruitdef Este fruitdef es la definicion de una fruta que se desea crear en pantalla y se agrega a fruitsToSpawn.
+     */
     public void spawnFruit(FruitDef fruitdef) {
         fruitsToSpawn.add(fruitdef);
     }
 
+
+    /**
+     * Esta funcion revisa si hay algo nuevo en fruitsToSpawn y si encuentra que no esta vacia revisa a que tipo de
+     * fruta pertenece y lo ingresa al array de frutas siendo de su clase correspondiente.
+     */
     public void handleSpawningFruits() {
         if (!fruitsToSpawn.isEmpty()) {
             FruitDef fruitdef = fruitsToSpawn.poll();
@@ -146,10 +180,16 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Retorna el atlas de los personajes
+     */
     public TextureAtlas getAtlas() {
         return atlas;
     }
 
+    /**
+     * Retorna el atlas de las frutas
+     */
     public TextureAtlas getFruitAtlas() {
         return fruitAtlas;
     }
@@ -159,6 +199,12 @@ public class GameScreen implements Screen {
 
     }
 
+    /**
+     * La funcion update lo que hace es actualizar todos los actores presentes dentro de la pantalla, sea su posicion,
+     * su sprite, agregar, eliminar, etc
+     * @param dt El deltatime permite mover los objetos en pantalla no por frames de forma que si fuera por frames
+     *           funcionaria diferente dependiendo del hardware.
+     */
     public void update(float dt) {
         handleInput(dt);
         handleSpawningFruits();
@@ -172,14 +218,16 @@ public class GameScreen implements Screen {
             nanaPlayer.update(dt);
         }
 
-
+        // Si la posicion de popo aumenta arriba de 500 cambia de posicion la camara
         if (popoPlayer.b2body.getPosition().y * 100 > 500) {
             gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
         }
 
+        // Actualiza cada enemigo en la pantalla
         for (Enemy enemy : enemies) {
             enemy.update(dt);
         }
+        // Actualiza cada fruta en la pantalla
         for (Fruit fruit : fruits) {
             fruit.update(dt);
         }
@@ -189,6 +237,11 @@ public class GameScreen implements Screen {
         renderer.setView(gamecam);
     }
 
+    /**
+     * Aqui se revisa el input ingresado por el usuario, usualmente utilizado para mover a popo o nana
+     * @param dt El deltatime permite mover los objetos en pantalla no por frames de forma que si fuera por frames
+     *           funcionaria diferente dependiendo del hardware.
+     */
     private void handleInput(float dt) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.W) && popoPlayer.currentState != Popo.State.JUMPING && popoPlayer.currentState != Popo.State.FALLING) {
             popoPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), popoPlayer.b2body.getWorldCenter(), true);
@@ -235,6 +288,9 @@ public class GameScreen implements Screen {
     }
 
     @Override
+    /**
+     * Este metodo dibuja lo que tenga que dibujar dentro de la pantalla
+     */
     public void render(float delta) {
         update(delta);
 
@@ -247,6 +303,7 @@ public class GameScreen implements Screen {
 
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
+        // dibuja los jugadores
         if (MainMenuScreen.players == 1) {
             popoPlayer.draw(game.batch);
         } else {
@@ -255,9 +312,11 @@ public class GameScreen implements Screen {
         }
 
         yeti.draw(game.batch);
+        // dibuja las frutas
         for (Fruit fruit : fruits) {
             fruit.draw(game.batch);
         }
+        // dibuja los enemigos
         for (Enemy enemy : enemies) {
             enemy.draw(game.batch);
         }

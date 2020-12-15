@@ -23,7 +23,7 @@ public class Seal extends Enemy{
 
     public Seal(GameScreen screen, float floor, boolean facingLeft) {
         super(screen, floor-20, facingLeft);
-
+        // define su velocidad dependiendo de hacia donde esta viendo
         if (facingLeft) {
             velocity = new Vector2(-0.3f, 0);
         } else {
