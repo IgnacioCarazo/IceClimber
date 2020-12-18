@@ -1,8 +1,10 @@
 package com.lenguajes.iceclimber.desktop;
 
+import com.lenguajes.iceclimber.Sockets.Connect;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.lenguajes.iceclimber.IceClimber;
+
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -12,5 +14,10 @@ public class DesktopLauncher {
 		config.width = IceClimber.MENUWIDTH;
 		config.forceExit = false;
 		new LwjglApplication(new IceClimber(), config);
+
+
+
 	}
 }
+
+

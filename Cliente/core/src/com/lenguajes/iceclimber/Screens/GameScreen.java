@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
+import com.lenguajes.iceclimber.Sockets.Connect;
 import com.lenguajes.iceclimber.Sprites.Enemies.*;
 import com.lenguajes.iceclimber.Sprites.Items.Onion;
 import com.lenguajes.iceclimber.Sprites.Items.Fruit;
@@ -27,13 +28,16 @@ import com.lenguajes.iceclimber.Tools.B2WorldCreator;
 import com.lenguajes.iceclimber.Tools.WorldContactListener;
 import sun.rmi.rmic.Main;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * La clase GameScreen que implemente Screen siendo esta una clase predeterminada de la libreria
  * libgdx se utiliza como la pantalla del juego principal, donde basicamente ocurre todo
  */
-public class GameScreen implements Screen {
+public class GameScreen implements Screen, Runnable{
 
     // variables finales
     public static final float SPEED = 200;
@@ -46,11 +50,10 @@ public class GameScreen implements Screen {
     private TextureAtlas atlas;
     private TextureAtlas fruitAtlas;
 
-
-
     private OrthographicCamera gamecam;
     private Viewport gameport;
     private Hud hud;
+
 
     //variables de box 2d
     private World world;
@@ -81,6 +84,10 @@ public class GameScreen implements Screen {
      * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
      */
     public GameScreen(IceClimber game) {
+        //crea un hilo para iniciar la conexion cliente-servidor
+        Thread t = new Thread(this);
+        t.start();
+
         this.game = game;
         // Los atlas se utilizan para hacer las animaciones de los sprites
         atlas = new TextureAtlas("Popo_Nana_and_Enemies.pack");
@@ -127,6 +134,8 @@ public class GameScreen implements Screen {
         float floor = 5;
 
         yeti = new Yeti(this, floor * 10, true);
+
+
     }
 
     /**
@@ -364,5 +373,22 @@ public class GameScreen implements Screen {
         hud.dispose();
         game.batch.dispose();
 
+    }
+
+    @Override
+    public void run() {
+        Connect connect = new Connect();
+        Connect.setUp();
+        try {
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+            String userInput;
+            while ((userInput = stdIn.readLine()) != null) {
+                connect.out.println(userInput);
+                System.out.println("SERVER: " + connect.in.readLine());
+                this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bird.class, true));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

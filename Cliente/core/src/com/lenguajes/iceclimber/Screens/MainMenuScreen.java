@@ -6,6 +6,11 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.lenguajes.iceclimber.IceClimber;
+import com.lenguajes.iceclimber.Sockets.Connect;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class MainMenuScreen implements Screen {
 
@@ -71,6 +76,7 @@ public class MainMenuScreen implements Screen {
                 game.batch.draw(playButton, PLAY_BUTTON_X,PLAY_BUTTON_Y + 10);
             if (Gdx.input.isTouched() && players != 0) {
                 game.setScreen(new GameScreen(game));
+
             }
         } else {
             game.batch.draw(playButton, PLAY_BUTTON_X,PLAY_BUTTON_Y);
@@ -82,6 +88,7 @@ public class MainMenuScreen implements Screen {
             game.batch.draw(onePlayerButton, ONE_PLAYER_BUTTON_X,ONE_PLAYER_BUTTON_Y + 10);
             if (Gdx.input.isTouched()) {
                 players = 1;
+
             }
         } else {
             game.batch.draw(onePlayerButton, ONE_PLAYER_BUTTON_X,ONE_PLAYER_BUTTON_Y);
