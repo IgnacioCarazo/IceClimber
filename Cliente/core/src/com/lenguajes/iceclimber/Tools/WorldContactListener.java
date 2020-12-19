@@ -78,14 +78,14 @@ public class WorldContactListener implements ContactListener {
                 if (fixA.getUserData() instanceof Enemy) {
                     if (fixB.getUserData() instanceof Popo) {
                         ((Popo) fixB.getUserData()).hit((Enemy) fixA.getUserData());
-                    } else {
+                    } else if (fixB.getUserData() instanceof Nana) {
                         ((Nana) fixB.getUserData()).hit((Enemy) fixA.getUserData());
                     }
 
                 } else if (fixB.getUserData() instanceof Enemy) {
                     if (fixA.getUserData() instanceof Popo) {
                         ((Popo) fixA.getUserData()).hit((Enemy) fixB.getUserData());
-                    } else {
+                    } else if (fixB.getUserData() instanceof Nana) {
                         ((Nana) fixA.getUserData()).hit((Enemy) fixB.getUserData());
                     }
                 }
@@ -96,13 +96,13 @@ public class WorldContactListener implements ContactListener {
                 if (fixA.getUserData() instanceof Fruit) {
                     if (fixB.getUserData() instanceof Popo) {
                         ((Fruit) fixA.getUserData()).use(true);
-                    } else {
+                    } else if (fixB.getUserData() instanceof Nana) {
                         ((Fruit) fixA.getUserData()).use(false);
                     }
                 } else if (fixB.getUserData() instanceof Fruit) {
                     if (fixA.getUserData() instanceof Popo) {
                         ((Fruit) fixB.getUserData()).use(true);
-                    } else {
+                    } else if (fixB.getUserData() instanceof Nana) {
                         ((Fruit) fixB.getUserData()).use(false);
                     }
                 }

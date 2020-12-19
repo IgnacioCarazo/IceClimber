@@ -26,15 +26,21 @@ public class Bird extends Enemy {
         super(screen, floor, facingleft);
         this.facingLeft = facingleft;
 
-        // define su velocidad dependiendo de hacia donde esta viendo
+        // define su velocidad dependiendo de hacia donde esta viendo y si hay bonus
         if (facingLeft) {
+            if (!screen.bonus) {
+                birdVelocity = new Vector2(-0.3f, 0);
+            } else {
+                birdVelocity = new Vector2(-0.7f, 0);
+            }
 
-            birdVelocity = new Vector2(-0.3f, 0.1655599999f);
         } else {
-
-            birdVelocity = new Vector2(0.3f, 0.1655599999f);
+            if (!screen.bonus) {
+                birdVelocity = new Vector2(0.3f, 0);
+            } else {
+                birdVelocity = new Vector2(0.7f, 0);
+            }
         }
-
 
         frames = new Array<TextureRegion>();
         for (int i = 0; i < 2; i++) {
@@ -103,8 +109,8 @@ public class Bird extends Enemy {
 
         PolygonShape head = new PolygonShape();
         Vector2[] vertice = new Vector2[4];
-        vertice[0] = new Vector2(-6,12).scl(1/IceClimber.PPM);
-        vertice[1] = new Vector2(6,12).scl(1/IceClimber.PPM);
+        vertice[0] = new Vector2(-8,12).scl(1/IceClimber.PPM);
+        vertice[1] = new Vector2(8,12).scl(1/IceClimber.PPM);
         vertice[2] = new Vector2(-3,3).scl(1/IceClimber.PPM);
         vertice[3] = new Vector2(3,3).scl(1/IceClimber.PPM);
         head.set(vertice);

@@ -44,6 +44,7 @@ public class IceClimber extends Game {
 		manager = new AssetManager();
 		manager.load("audio/music/game_start.mp3", Music.class);
 		manager.load("audio/music/ice_climber.mp3", Music.class);
+		manager.load("audio/music/bonus_stage.mp3", Music.class);
 		manager.load("audio/sounds/breakblock.wav", Sound.class);
 		manager.finishLoading();
 		this.setScreen(new MainMenuScreen(this));

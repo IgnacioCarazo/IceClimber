@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="83a6769f-6513-4983-a163-7656c8c1ed88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Scenes/Hud.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Scenes/Hud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/IceClimber.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/IceClimber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/MainMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/MainMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Seal.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Seal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Carrot.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Carrot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Onion.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Onion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Pumpkin.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Items/Pumpkin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,7 @@
       <workItem from="1607994262437" duration="275000" />
       <workItem from="1608048949127" duration="2117000" />
       <workItem from="1608052047657" duration="3266000" />
-      <workItem from="1608332252095" duration="10082000" />
+      <workItem from="1608332252095" duration="11499000" />
     </task>
     <servers />
   </component>

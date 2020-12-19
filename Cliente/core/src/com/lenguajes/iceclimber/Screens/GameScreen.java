@@ -47,6 +47,7 @@ public class GameScreen implements Screen, Runnable{
     IceClimber game;
     private TextureAtlas atlas;
     private TextureAtlas fruitAtlas;
+    public boolean bonus;
 
     private OrthographicCamera gamecam;
     private Viewport gameport;
@@ -81,12 +82,13 @@ public class GameScreen implements Screen, Runnable{
      * Constructor de la clase GameScreen. Aqui se inicializa lo necesario para que se inicie el juego
      * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
      */
-    public GameScreen(IceClimber game) {
+    public GameScreen(IceClimber game, boolean bonus) {
         //crea un hilo para iniciar la conexion cliente-servidor
         Thread t = new Thread(this);
         t.start();
 
         this.game = game;
+        this.bonus = bonus;
         // Los atlas se utilizan para hacer las animaciones de los sprites
         atlas = new TextureAtlas("Popo_Nana_and_Enemies.pack");
         fruitAtlas = new TextureAtlas("Fruits.pack");
@@ -101,9 +103,16 @@ public class GameScreen implements Screen, Runnable{
         renderer = new OrthogonalTiledMapRenderer(map, 1 / IceClimber.PPM);
 
         // inicializa la musica
-        music = IceClimber.manager.get("audio/music/ice_climber.mp3",Music.class);
-        music.setLooping(true);
-        music.play();
+        if (!this.bonus) {
+            music = IceClimber.manager.get("audio/music/ice_climber.mp3",Music.class);
+            music.setLooping(true);
+            music.play();
+        } else {
+            music = IceClimber.manager.get("audio/music/bonus_stage.mp3",Music.class);
+            music.setLooping(true);
+            music.play();
+        }
+
 
         //coloca la posicion de la camara e inicializa algunas variables necesarias para el funcionamiento del juego
         gamecam.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
@@ -232,6 +241,10 @@ public class GameScreen implements Screen, Runnable{
         // Si la posicion de popo aumenta arriba de 500 cambia de posicion la camara
         if (popoPlayer.b2body.getPosition().y * 100 > 500) {
             gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
+        }
+        if (popoPlayer.b2body.getPosition().y * 100 > 600) {
+            music.dispose();
+            game.setScreen(new GameScreen(game, true));
         }
 
         // Actualiza cada enemigo en la pantalla
