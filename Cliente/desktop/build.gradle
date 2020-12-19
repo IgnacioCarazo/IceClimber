@@ -4,12 +4,7 @@ sourceSets.main.resources.srcDirs = ["../core/assets"]
 
 project.ext.mainClassName = "com.lenguajes.iceclimber.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../core/assets")
-repositories {
-    mavenCentral()
-}
-dependencies {
-    compile 'com.google.code.gson:gson:2.8.2'
-}
+
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
