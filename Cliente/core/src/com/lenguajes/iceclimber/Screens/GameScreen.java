@@ -258,6 +258,7 @@ public class GameScreen implements Screen, Runnable{
             popoPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), popoPlayer.b2body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D) && popoPlayer.b2body.getLinearVelocity().x <= 2) {
+
             popoPlayer.b2body.applyLinearImpulse(new Vector2(0.1f, 0), popoPlayer.b2body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A) && popoPlayer.b2body.getLinearVelocity().x >= -2) {

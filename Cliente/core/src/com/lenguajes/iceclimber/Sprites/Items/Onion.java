@@ -41,10 +41,9 @@ public class Onion extends Fruit{
 
     @Override
     public void use(boolean popo) {
-        System.out.println("useuseuseuseuse");
         if (!this.toDestroy) {
             if (popo) {
-                Hud.addScorePopo(500);
+                Hud.addScorePopo(300);
             } else {
                 Hud.addScoreNana(300);
             }

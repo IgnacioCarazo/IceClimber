@@ -120,6 +120,7 @@ public class Yeti extends Enemy{
     }
     @Override
     public void hitOnHead(Nana nana, boolean head) {
+        System.out.println("NANAHIT");
         if (!setToDestroy && head){
             Hud.addScoreNana(100);
         } else if (!setToDestroy && !head) {

@@ -112,7 +112,7 @@ public class Hud implements Disposable {
         popoLivesLabel.setText(String.format("%01d", popoLives));
     }
     public static void removeLiveNana(int value) {
-        popoLives -= value;
+        nanaLives -= value;
         nanaLivesLabel.setText(String.format("%01d", nanaLives));
     }
 

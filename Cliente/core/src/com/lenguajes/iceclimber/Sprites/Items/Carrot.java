@@ -39,12 +39,11 @@ public class Carrot extends Fruit {
 
     @Override
     public void use(boolean popo) {
-        System.out.println("useuseuseuseuse");
         if (!this.toDestroy) {
             if (popo) {
-                Hud.addScorePopo(500);
+                Hud.addScorePopo(100);
             } else {
-                Hud.addScoreNana(300);
+                Hud.addScoreNana(100);
             }
         }
         destroy();
