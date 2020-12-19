@@ -152,7 +152,7 @@ public class Pterodactyl extends Enemy{
     @Override
     public void hitOnHead(Popo popo, boolean head) {
         if (!setToDestroy && head){
-            Hud.addScorePopo(100);
+            Hud.addScorePopo(1500);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
         }
@@ -162,7 +162,7 @@ public class Pterodactyl extends Enemy{
     @Override
     public void hitOnHead(Nana nana, boolean head) {
         if (!setToDestroy && head){
-            Hud.addScoreNana(100);
+            Hud.addScoreNana(1500);
         } else if (!setToDestroy && !head) {
             Hud.removeLiveNana(1);
         }

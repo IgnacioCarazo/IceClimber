@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="83a6769f-6513-4983-a163-7656c8c1ed88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/assets/iceclimber.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/iceclimber.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/MainCharacters/Popo.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/MainCharacters/Popo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/TileObjects/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/TileObjects/Brick.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,17 +66,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DesktopLauncher" />
@@ -105,6 +88,7 @@
       <workItem from="1608052047657" duration="3266000" />
       <workItem from="1608332252095" duration="12566000" />
       <workItem from="1608397924184" duration="3633000" />
+      <workItem from="1608404651861" duration="1846000" />
     </task>
     <servers />
   </component>
