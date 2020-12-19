@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="83a6769f-6513-4983-a163-7656c8c1ed88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/IceClimber.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/IceClimber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/iceclimber.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/iceclimber.tmx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/MainMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/MainMenuScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bear.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Bird.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Seal.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Seal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Yeti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/MainCharacters/Popo.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/MainCharacters/Popo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/TileObjects/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/TileObjects/Brick.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +59,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
@@ -68,6 +68,17 @@
       <option name="MAIN_CLASS_NAME" value="com.lenguajes.iceclimber.desktop.DesktopLauncher" />
       <module name="Cliente.desktop.main" />
       <option name="VM_PARAMETERS" value="--illegal-access=deny" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,7 +103,8 @@
       <workItem from="1607994262437" duration="275000" />
       <workItem from="1608048949127" duration="2117000" />
       <workItem from="1608052047657" duration="3266000" />
-      <workItem from="1608332252095" duration="11499000" />
+      <workItem from="1608332252095" duration="12566000" />
+      <workItem from="1608397924184" duration="3633000" />
     </task>
     <servers />
   </component>

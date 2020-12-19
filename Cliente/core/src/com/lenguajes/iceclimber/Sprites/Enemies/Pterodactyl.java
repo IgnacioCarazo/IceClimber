@@ -30,16 +30,16 @@ public class Pterodactyl extends Enemy{
         // define su velocidad dependiendo de hacia donde esta viendo y si hay bonus
         if (facingLeft) {
             if (!screen.bonus) {
-                birdVelocity = new Vector2(-0.3f, 0);
+                birdVelocity = new Vector2(-0.3f, (float) 0.17);
             } else {
-                birdVelocity = new Vector2(-0.7f, 0);
+                birdVelocity = new Vector2(-0.7f, (float) 0.17);
             }
 
         } else {
             if (!screen.bonus) {
-                birdVelocity = new Vector2(0.3f, 0);
+                birdVelocity = new Vector2(0.3f, (float) 0.17);
             } else {
-                birdVelocity = new Vector2(0.7f, 0);
+                birdVelocity = new Vector2(0.7f, (float) 0.17);
             }
         }
 
@@ -57,10 +57,41 @@ public class Pterodactyl extends Enemy{
 
     public void update(float dt) {
         stateTime += dt;
-        if (b2body.getPosition().x * 100 > 350) {
-            setToDestroy = true;
-        } else if (b2body.getPosition().x * 100 < -10) {
-            setToDestroy = true;
+        if (b2body.getPosition().x * 100 > 300) {
+
+            if (facingLeft) {
+                if (!screen.bonus) {
+                    System.out.println("FACINGLEFT");
+                    birdVelocity = new Vector2(0.3f, (float) 0.17);
+                } else {
+                    birdVelocity = new Vector2(0.7f, (float) 0.17);
+                }
+
+            } else {
+                if (!screen.bonus) {
+                    birdVelocity = new Vector2(-0.3f, (float) 0.17);
+                } else {
+                    birdVelocity = new Vector2(-0.7f, (float) 0.17);
+                }
+            }
+        } else if (b2body.getPosition().x * 100 < 20) {
+
+            if (facingLeft) {
+
+                if (!screen.bonus) {
+                    birdVelocity = new Vector2(-0.3f, (float) 0.17);
+                } else {
+                    birdVelocity = new Vector2(-0.7f, (float) 0.17);
+                }
+
+            } else {
+                System.out.println("FACINGRIGHT");
+                if (!screen.bonus) {
+                    birdVelocity = new Vector2(0.3f, (float) 0.17);
+                } else {
+                    birdVelocity = new Vector2(0.7f, (float) 0.17);
+                }
+            }
         }
         if (setToDestroy && !destroyed) {
             world.destroyBody(b2body);

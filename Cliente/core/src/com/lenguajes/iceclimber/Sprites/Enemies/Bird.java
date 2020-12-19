@@ -131,7 +131,7 @@ public class Bird extends Enemy {
     @Override
     public void hitOnHead(Popo popo, boolean head) {
         if (!setToDestroy && head){
-            Hud.addScorePopo(100);
+            Hud.addScorePopo(250);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
         }

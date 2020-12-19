@@ -71,7 +71,7 @@ public class GameScreen implements Screen, Runnable{
     private Music music;
 
 
-    private Yeti yeti;
+    private Pterodactyl teroFinal;
 
     private LinkedBlockingQueue<EnemyDef> enemiesToSpawn;
     private Array<Enemy> enemies;
@@ -115,7 +115,7 @@ public class GameScreen implements Screen, Runnable{
 
 
         //coloca la posicion de la camara e inicializa algunas variables necesarias para el funcionamiento del juego
-        gamecam.position.set(gameport.getWorldWidth() / 2, gameport.getWorldHeight() / 2, 0);
+        gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() +0)/ 2, 0);
 
         world = new World(new Vector2(0, -10), true);
         b2dr = new Box2DDebugRenderer();
@@ -138,9 +138,10 @@ public class GameScreen implements Screen, Runnable{
         }
 
         world.setContactListener(new WorldContactListener());
-        float floor = 5;
 
-        yeti = new Yeti(this, floor * 10, true);
+        // floor 900 boss
+
+        teroFinal = new Pterodactyl(this, 760, true);
 
 
     }
@@ -242,7 +243,7 @@ public class GameScreen implements Screen, Runnable{
         if (popoPlayer.b2body.getPosition().y * 100 > 500) {
             gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
         }
-        if (popoPlayer.b2body.getPosition().y * 100 > 600) {
+        if (popoPlayer.b2body.getPosition().y * 100 > 700 && !bonus) {
             music.dispose();
             game.setScreen(new GameScreen(game, true));
         }
@@ -256,7 +257,7 @@ public class GameScreen implements Screen, Runnable{
             fruit.update(dt);
         }
 
-        yeti.update(dt);
+        teroFinal.update(dt);
         gamecam.update();
         renderer.setView(gamecam);
     }
@@ -336,7 +337,7 @@ public class GameScreen implements Screen, Runnable{
             popoPlayer.draw(game.batch);
         }
 
-        yeti.draw(game.batch);
+        teroFinal.draw(game.batch);
         // dibuja las frutas
         for (Fruit fruit : fruits) {
             fruit.draw(game.batch);

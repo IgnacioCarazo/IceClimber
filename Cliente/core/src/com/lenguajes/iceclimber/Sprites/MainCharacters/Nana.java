@@ -80,11 +80,11 @@ public class Nana extends Sprite {
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 
         if (b2body.getPosition().x * 100 > 300) {
-            world.destroyBody(b2body);
-            defineNana(20 / IceClimber.PPM,b2body.getPosition().y - getHeight() / 2);
+            this.b2body.applyLinearImpulse(new Vector2(10f, 0), this.b2body.getWorldCenter(), true);
+            defineNana(20 / IceClimber.PPM,b2body.getPosition().y + - getHeight() / 2);
         } else if (b2body.getPosition().x * 100 < 20) {
-            world.destroyBody(b2body);
-            defineNana(300 / IceClimber.PPM,b2body.getPosition().y - getHeight() / 2);
+            this.b2body.applyLinearImpulse(new Vector2(-10f, 0), this.b2body.getWorldCenter(), true);
+            defineNana(300 / IceClimber.PPM,b2body.getPosition().y + - getHeight() / 2);
         }
         setRegion(getFrame(dt));
     }

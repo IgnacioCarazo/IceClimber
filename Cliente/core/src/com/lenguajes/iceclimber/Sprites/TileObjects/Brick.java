@@ -27,9 +27,9 @@ public class Brick extends InteractiveTileObject{
         getCell().setTile(null);
         IceClimber.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
         if (popo) {
-            Hud.addScorePopo(200);
+            Hud.addScorePopo(50);
         } else {
-            Hud.addScoreNana(200);
+            Hud.addScoreNana(50);
         }
 
     }
