@@ -24,7 +24,6 @@ import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 import com.lenguajes.iceclimber.Tools.B2WorldCreator;
 import com.lenguajes.iceclimber.Tools.WorldContactListener;
-import sun.rmi.rmic.Main;
 
 import java.io.BufferedReader;
 import java.io.IOException;
