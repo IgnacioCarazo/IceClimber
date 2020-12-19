@@ -7,7 +7,11 @@
     <list default="true" id="83a6769f-6513-4983-a163-7656c8c1ed88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Screens/GameScreen.java" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/desktop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/build.gradle" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/lenguajes/iceclimber/Sprites/Enemies/Pterodactyl.java" afterDir="false" />
+>>>>>>> main
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +68,7 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -75,6 +80,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> main
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lenguajes.iceclimber.desktop.DesktopLauncher" />
       <module name="Cliente.desktop.main" />
@@ -105,6 +112,7 @@
       <workItem from="1608052047657" duration="3266000" />
       <workItem from="1608332252095" duration="12566000" />
       <workItem from="1608397924184" duration="3633000" />
+      <workItem from="1608404651861" duration="1846000" />
     </task>
     <servers />
   </component>

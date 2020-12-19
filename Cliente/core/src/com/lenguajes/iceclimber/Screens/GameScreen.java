@@ -239,13 +239,29 @@ public class GameScreen implements Screen, Runnable{
         }
 
         // Si la posicion de popo aumenta arriba de 500 cambia de posicion la camara
-        if (popoPlayer.b2body.getPosition().y * 100 > 500) {
-            gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
+        if (MainMenuScreen.players == 2) {
+            if ((popoPlayer.b2body.getPosition().y * 100 > 700 | nanaPlayer.b2body.getPosition().y * 100 > 700) && !bonus) {
+                music.dispose();
+                game.setScreen(new GameScreen(game, true));
+            }
+            if (popoPlayer.b2body.getPosition().y * 100 > 450 && nanaPlayer.b2body.getPosition().y * 100 > 450) {
+                gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
+            } else {
+                gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 0) / 2, 0);
+            }
+        } else {
+            if (popoPlayer.b2body.getPosition().y * 100 > 450) {
+                gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
+            } else {
+                gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 0) / 2, 0);
+            }
+            if (popoPlayer.b2body.getPosition().y * 100 > 700 && !bonus) {
+                music.dispose();
+                game.setScreen(new GameScreen(game, true));
+            }
         }
-        if (popoPlayer.b2body.getPosition().y * 100 > 700 && !bonus) {
-            music.dispose();
-            game.setScreen(new GameScreen(game, true));
-        }
+
+
 
         // Actualiza cada enemigo en la pantalla
         for (Enemy enemy : enemies) {
@@ -305,7 +321,7 @@ public class GameScreen implements Screen, Runnable{
             this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Pterodactyl.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Pumpkin.class));
+            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Onion.class));
         }
 
 
