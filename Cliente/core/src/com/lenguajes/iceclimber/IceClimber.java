@@ -31,6 +31,7 @@ public class IceClimber extends Game {
 	public static final short DESTROYED_BIT = 16;
 	public static final short ENEMY_BIT = 62;
 	public static final short ENEMY_HEAD_BIT = 128;
+	public static final short FRUIT_BIT = 32;
 
 	public static AssetManager manager;
 

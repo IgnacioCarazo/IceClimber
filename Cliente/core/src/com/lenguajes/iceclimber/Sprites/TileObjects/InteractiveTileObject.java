@@ -8,6 +8,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
 /**
  * Esta clase permite compartirle atributos a cualquier tiled object dentro del mapa que sea interactuable
@@ -49,7 +51,9 @@ public abstract class InteractiveTileObject {
     /**
      * Se llama si algun personaje golpeo con la cabeza un bloque
      */
-    public abstract void onHeadHit();
+    public abstract void onHeadHit(boolean popo);
+
+
 
     public void setCategoryFilter(short filterBit) {
         Filter filter = new Filter();

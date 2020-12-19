@@ -35,6 +35,7 @@ public class Hud implements Disposable {
     private static Label nanaLivesLabel;
 
     private Label livesLabel;
+    private Label livesLabel2;
     private Label popoLabel;
     private Label nanaLabel;
 
@@ -67,6 +68,7 @@ public class Hud implements Disposable {
         popoLabel = new Label("POPO", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         nanaLabel = new Label("NANA", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         livesLabel = new Label("LIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        livesLabel2 = new Label("LIVES", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 
 
@@ -80,7 +82,7 @@ public class Hud implements Disposable {
             table.add(popoLabel).expandX().padTop(10);
             table.add(livesLabel).expandX().padTop(10);
             table.add(nanaLabel).expandX().padTop(10);
-            table.add(livesLabel).expandX().padTop(10);
+            table.add(livesLabel2).expandX().padTop(10);
             table.row();
             table.add(poposcoreLabel).expandX();
             table.add(popoLivesLabel).expandX();

@@ -19,9 +19,7 @@ import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Sockets.Connect;
 import com.lenguajes.iceclimber.Sprites.Enemies.*;
-import com.lenguajes.iceclimber.Sprites.Items.Onion;
-import com.lenguajes.iceclimber.Sprites.Items.Fruit;
-import com.lenguajes.iceclimber.Sprites.Items.FruitDef;
+import com.lenguajes.iceclimber.Sprites.Items.*;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 import com.lenguajes.iceclimber.Tools.B2WorldCreator;
@@ -185,6 +183,10 @@ public class GameScreen implements Screen, Runnable{
             FruitDef fruitdef = fruitsToSpawn.poll();
             if (fruitdef.type == Onion.class) {
                 fruits.add(new Onion(this, fruitdef.position.x, fruitdef.position.y));
+            } else if (fruitdef.type == Pumpkin.class) {
+                fruits.add(new Pumpkin(this, fruitdef.position.x, fruitdef.position.y));
+            } else if (fruitdef.type == Carrot.class) {
+                fruits.add(new Carrot(this, fruitdef.position.x, fruitdef.position.y));
             }
         }
     }
@@ -289,7 +291,7 @@ public class GameScreen implements Screen, Runnable{
             this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Pterodactyl.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Onion.class));
+            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Pumpkin.class));
         }
 
 

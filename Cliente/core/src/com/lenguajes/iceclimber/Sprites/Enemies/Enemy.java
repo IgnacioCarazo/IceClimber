@@ -3,8 +3,9 @@ package com.lenguajes.iceclimber.Sprites.Enemies;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
-import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
 /**
  * Esta clase es la clase abstracta de todos los enemigos. Provee ciertos atributos que comparten todos los enemigos
@@ -56,8 +57,15 @@ public abstract class Enemy extends Sprite {
 
     /**
      * Esta funcion se llama si el enemigo fue golpeado en la cabeza por popo o nana.
+     * @param popo
+     * @param head
      */
-    public abstract void hitOnHead();
+    public abstract void hitOnHead(Popo popo, boolean head);
+    /**
+     * Esta funcion se llama si el enemigo fue golpeado en la cabeza por popo o nana.
+     * @param nana
+     */
+    public abstract void hitOnHead(Nana nana, boolean head);
 
     /**
      * Actualiza el enemigo en la pantalla.

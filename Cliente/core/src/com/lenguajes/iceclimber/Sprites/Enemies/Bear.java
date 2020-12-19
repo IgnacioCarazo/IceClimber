@@ -10,7 +10,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.utils.Array;
 import com.lenguajes.iceclimber.IceClimber;
+import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
 public class Bear extends Enemy{
 
@@ -107,7 +110,22 @@ public class Bear extends Enemy{
     }
 
     @Override
-    public void hitOnHead() {
+    public void hitOnHead(Popo popo, boolean head) {
+        if (!setToDestroy && head){
+            Hud.addScorePopo(100);
+        } else if (!setToDestroy && !head) {
+            Hud.removeLivePopo(1);
+        }
+
+        setToDestroy = true;
+    }
+    @Override
+    public void hitOnHead(Nana nana, boolean head) {
+        if (!setToDestroy && head){
+            Hud.addScoreNana(100);
+        } else if (!setToDestroy && !head) {
+            Hud.removeLiveNana(1);
+        }
         setToDestroy = true;
     }
 }

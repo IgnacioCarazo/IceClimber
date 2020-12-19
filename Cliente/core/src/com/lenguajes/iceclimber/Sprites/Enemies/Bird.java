@@ -1,6 +1,5 @@
 package com.lenguajes.iceclimber.Sprites.Enemies;
 
-import com.badlogic.gdx.Files;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -8,7 +7,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.lenguajes.iceclimber.IceClimber;
+import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
 public class Bird extends Enemy {
 
@@ -121,11 +123,21 @@ public class Bird extends Enemy {
     }
 
     @Override
-    public void hitOnHead() {
-        Filter filter = new Filter();
-        filter.maskBits = IceClimber.NOTHING_BIT;
-        for (Fixture fixture : b2body.getFixtureList()) {
-            fixture.setFilterData(filter);
+    public void hitOnHead(Popo popo, boolean head) {
+        if (!setToDestroy && head){
+            Hud.addScorePopo(100);
+        } else if (!setToDestroy && !head) {
+            Hud.removeLivePopo(1);
+        }
+
+        setToDestroy = true;
+    }
+    @Override
+    public void hitOnHead(Nana nana, boolean head) {
+        if (!setToDestroy && head){
+            Hud.addScoreNana(100);
+        } else if (!setToDestroy && !head) {
+            Hud.removeLiveNana(1);
         }
         setToDestroy = true;
     }

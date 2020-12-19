@@ -32,10 +32,14 @@ public abstract class Fruit extends Sprite {
         this.world = screen.getWorld();
         setPosition(x, y);
         setBounds(getX(), getY(), 16 / IceClimber.PPM, 16 / IceClimber.PPM );
+        toDestroy = false;
+        destroyed = false;
+        defineFruit();
+
     }
 
     public abstract void defineFruit();
-    public abstract void use();
+    public abstract void use(boolean popo);
 
     /**
      * Actualiza la fruta en la pantalla.

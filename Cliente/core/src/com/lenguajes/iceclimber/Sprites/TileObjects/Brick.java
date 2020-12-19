@@ -6,6 +6,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
+import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
 /**
  * La clase brick es la correspondiente a aquellos bloques que se pueden romper por algun personaje.
@@ -19,11 +21,18 @@ public class Brick extends InteractiveTileObject{
     }
 
     @Override
-    public void onHeadHit() {
+    public void onHeadHit(boolean popo) {
         Gdx.app.log("Brick", "Collision");
         setCategoryFilter(IceClimber.DESTROYED_BIT);
         getCell().setTile(null);
         IceClimber.manager.get("audio/sounds/breakblock.wav", Sound.class).play();
-        Hud.addScorePopo(200);
+        if (popo) {
+            Hud.addScorePopo(200);
+        } else {
+            Hud.addScoreNana(200);
+        }
+
     }
+
+
 }

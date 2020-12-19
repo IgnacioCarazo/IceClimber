@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.Array;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.Enemies.Enemy;
 
 
 /**
@@ -150,9 +151,8 @@ public class Nana extends Sprite {
     /**
      * Esta funcion se llama si nana fue atacada por un enemigo
      */
-    public void hit(){
-
-        Hud.removeLiveNana(1);
+    public void hit(Enemy enemy){
+        enemy.hitOnHead(this, false);
     }
 
     /**
@@ -171,7 +171,7 @@ public class Nana extends Sprite {
         shape.setRadius(10 / IceClimber.PPM);
 
         fdef.filter.categoryBits = IceClimber.PLAYER_BIT;
-        fdef.filter.maskBits = IceClimber.GROUND_BIT | IceClimber.BRICK_BIT | IceClimber.ENEMY_HEAD_BIT;
+        fdef.filter.maskBits = IceClimber.GROUND_BIT | IceClimber.BRICK_BIT | IceClimber.ENEMY_HEAD_BIT | IceClimber.FRUIT_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);

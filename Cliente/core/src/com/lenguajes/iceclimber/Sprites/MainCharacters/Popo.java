@@ -149,9 +149,10 @@ public class Popo extends Sprite {
     /**
      * Esta funcion se llama si popo fue atacado por un enemigo
      */
-    public void hit(){
+    public void hit(Enemy enemy){
+        enemy.hitOnHead(this, false);
 
-        Hud.removeLivePopo(1);
+
     }
 
     /**
@@ -170,7 +171,7 @@ public class Popo extends Sprite {
         shape.setRadius(10 / IceClimber.PPM);
 
         fdef.filter.categoryBits = IceClimber.PLAYER_BIT;
-        fdef.filter.maskBits = IceClimber.GROUND_BIT | IceClimber.BRICK_BIT | IceClimber.ENEMY_HEAD_BIT;
+        fdef.filter.maskBits = IceClimber.GROUND_BIT | IceClimber.BRICK_BIT | IceClimber.ENEMY_HEAD_BIT | IceClimber.FRUIT_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef).setUserData(this);
