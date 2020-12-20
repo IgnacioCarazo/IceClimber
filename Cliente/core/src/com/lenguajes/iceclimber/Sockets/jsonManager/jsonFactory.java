@@ -13,4 +13,10 @@ public class jsonFactory {
     public String getLevel(){
         return LVL;
     }
+
+    public jsonFactory(int t) {
+        ID = "popo";
+        ITEMS = new int[] {1, 44, 322};
+        LVL = "bonus";
+    }
 }

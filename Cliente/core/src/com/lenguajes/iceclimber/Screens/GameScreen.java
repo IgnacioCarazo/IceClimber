@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Sockets.Connect;
+import com.lenguajes.iceclimber.Sockets.jsonManager.jsonHandler;
 import com.lenguajes.iceclimber.Sprites.Enemies.*;
 import com.lenguajes.iceclimber.Sprites.Items.*;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
@@ -82,14 +83,18 @@ public class GameScreen implements Screen, Runnable{
     public LinkedBlockingQueue<FruitDef> fruitsToSpawn;
     private Array<Fruit> fruits;
 
+    Connect connect;
+
+    private Thread t;
     /**
      * Constructor de la clase GameScreen. Aqui se inicializa lo necesario para que se inicie el juego
      * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
      */
     public GameScreen(IceClimber game, boolean bonus, boolean host, int players) {
         //crea un hilo para iniciar la conexion cliente-servidor
-        Thread t = new Thread(this);
+        t = new Thread(this);
         t.start();
+
         this.players = players;
         this.host = host;
         this.game = game;
@@ -448,17 +453,25 @@ public class GameScreen implements Screen, Runnable{
 
     @Override
     public void run() {
-        Connect connect = new Connect();
+        int msg = 0;
+        jsonHandler jsonChecker = new jsonHandler();
+        connect = new Connect();
         Connect.setUp();
         try {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
                 connect.out.println(userInput);
-                System.out.println("SERVER: " + connect.in.readLine());
-                this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bird.class, true));
+                if (msg != 0) {
+                    jsonChecker.jsonReader(connect.in.readLine(), this);
+                }
+                if(msg==0) {
+                    System.out.println("SERVER: " + connect.in.readLine());
+                }
+                msg = 1;
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -61,7 +61,6 @@ public class Pterodactyl extends Enemy{
 
             if (facingLeft) {
                 if (!screen.bonus) {
-                    System.out.println("FACINGLEFT");
                     birdVelocity = new Vector2(0.3f, (float) 0.17);
                 } else {
                     birdVelocity = new Vector2(0.7f, (float) 0.17);
@@ -85,7 +84,6 @@ public class Pterodactyl extends Enemy{
                 }
 
             } else {
-                System.out.println("FACINGRIGHT");
                 if (!screen.bonus) {
                     birdVelocity = new Vector2(0.3f, (float) 0.17);
                 } else {
