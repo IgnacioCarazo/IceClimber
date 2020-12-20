@@ -2,14 +2,14 @@
 #include<stdio.h>
 #include<winsock2.h>
 #include<pthread.h>
-#include "../servidor/jsonHandler.c"
+#include "../Servidor/jsonHandler.c"
 #include "json-c/json.h"
-#include "../servidor/ServerLogic.c"
+#include "../Servidor/ServerLogic.c"
 
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
 
-void* listenProced(void* arg, int* lista) {
+void* listenProced(void* arg) {
 
 	/*
 	Entradas:
@@ -23,16 +23,15 @@ void* listenProced(void* arg, int* lista) {
 	*/
 
 	int i;
-	for (i = 0; i < size; i++)
+	for (i = 0; i < 3; i++)
 	{
-		printf("inicia %i \n", *(lis + i));
+		printf("inicia %i \n", *((int * )arg + i));
 	}
 
 	WSADATA wsData;
 	SOCKET listening;
 	struct sockaddr_in server;
 	char* message;
-	int i;
 
 	//Iniciando Winsock
 	if (WSAStartup(MAKEWORD(2, 2), &wsData) != 0) {
@@ -173,7 +172,7 @@ int main(int argc, char* argv[]) {
 		printf("inicia %i \n", *(lis + i));
 	}
 	pthread_t newthread;
-	pthread_create(&newthread, NULL, listenProced(), &lis);
+	pthread_create(&newthread, NULL, listenProced, &lis);
 	consoleMenu(lis);
 	/*Demuetra el cambio ejecutado*/
 	for (i = 0; i < 3; i++)
