@@ -9,7 +9,7 @@
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
 
-void* listenProced(void* arg) {
+void* listenProced(void* arg, int* lista) {
 
 	/*
 	Entradas:
@@ -21,6 +21,12 @@ void* listenProced(void* arg) {
 	si algo falla. Una vez prepado el socked, se espera a que un cliente entre para conciliar una comunicacion correcta por medio de Json. Esta funcion recibe, analiza, 
 	prepara y envia los mensajes por medio de las funciones en JsonHandler.c y la libreria Json-c para mantener un standard correcto de Json.
 	*/
+
+	int i;
+	for (i = 0; i < size; i++)
+	{
+		printf("inicia %i \n", *(lis + i));
+	}
 
 	WSADATA wsData;
 	SOCKET listening;
@@ -167,7 +173,7 @@ int main(int argc, char* argv[]) {
 		printf("inicia %i \n", *(lis + i));
 	}
 	pthread_t newthread;
-	pthread_create(&newthread, NULL, listenProced, NULL);
+	pthread_create(&newthread, NULL, listenProced(), &lis);
 	consoleMenu(lis);
 	/*Demuetra el cambio ejecutado*/
 	for (i = 0; i < 3; i++)
