@@ -201,9 +201,6 @@ void consoleMenu(int* item) {
 				"_____________________________________________\n");
 			crearFruta(item, seleccion);
 			break;
-		case 9:
-			uno = 2;
-			break;
 		default:
 			printf("Por favor seleccione un numero valido");
 			break;
