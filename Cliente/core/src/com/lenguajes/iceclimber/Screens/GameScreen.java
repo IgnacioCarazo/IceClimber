@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Sockets.Connect;
+import com.lenguajes.iceclimber.Sockets.jsonManager.jsonFactory;
 import com.lenguajes.iceclimber.Sockets.jsonManager.jsonHandler;
 import com.lenguajes.iceclimber.Sprites.Enemies.*;
 import com.lenguajes.iceclimber.Sprites.Items.*;
@@ -86,6 +87,7 @@ public class GameScreen implements Screen, Runnable{
     Connect connect;
 
     private Thread t;
+
     /**
      * Constructor de la clase GameScreen. Aqui se inicializa lo necesario para que se inicie el juego
      * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
@@ -241,10 +243,18 @@ public class GameScreen implements Screen, Runnable{
      *           funcionaria diferente dependiendo del hardware.
      */
     public void update(float dt) {
+
         handleInput(dt);
         handleSpawningFruits();
         handleSpawningEnemies();
         world.step(1 / 60f, 6, 2);
+
+        /**
+        jsonHandler jsonChecker = new jsonHandler();
+        jsonFactory firstmsg = new jsonFactory(0);
+        jsonChecker.jsonWriter(firstmsg);
+        connect.out.println(jsonChecker.jsonWriter(firstmsg));
+        */
 
         if (this.players == 1) {
             popoPlayer.update(dt);
@@ -452,27 +462,54 @@ public class GameScreen implements Screen, Runnable{
     }
 
     @Override
+
+    /**
     public void run() {
         int msg = 0;
         jsonHandler jsonChecker = new jsonHandler();
         connect = new Connect();
         Connect.setUp();
-        try {
-            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-            String userInput;
-            while ((userInput = stdIn.readLine()) != null) {
-                connect.out.println(userInput);
-                if (msg != 0) {
-                    jsonChecker.jsonReader(connect.in.readLine(), this);
-                }
-                if(msg==0) {
-                    System.out.println("SERVER: " + connect.in.readLine());
-                }
-                msg = 1;
+        int a = 0;
+        while (true) {
+            try {
+                jsonChecker.jsonReader(connect.in.readLine(), this);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+    */
+
+     public void run() {
+     int msg = 0;
+     jsonHandler jsonChecker = new jsonHandler();
+     connect = new Connect();
+     Connect.setUp();
+     try {
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        String userInput;
+
+     while ((userInput = stdIn.readLine()) != null) {
+        connect.out.println(userInput);
+
+     if (msg != 0) {
+        jsonChecker.jsonReader(connect.in.readLine(), this);
+     }
+     if(msg==0) {
+        System.out.println("SERVER: " + connect.in.readLine());
+     }
+        msg = 1;
+        }
+     }
+     catch (IOException e) {
+        e.printStackTrace();
+        }
+     }
+
 }

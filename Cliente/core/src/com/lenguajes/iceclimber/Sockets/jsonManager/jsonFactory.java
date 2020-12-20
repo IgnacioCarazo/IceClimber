@@ -16,7 +16,7 @@ public class jsonFactory {
 
     public jsonFactory(int t) {
         ID = "popo";
-        ITEMS = new int[] {1, 44, 322};
+        ITEMS = new int[] {6,20,30};
         LVL = "bonus";
     }
 }
