@@ -121,6 +121,7 @@ public class Bear extends Enemy{
     @Override
     public void hitOnHead(Popo popo, boolean head) {
         if (!setToDestroy && head){
+            Hud.addScore(500, Bear.class, true);
             Hud.addScorePopo(500);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
@@ -130,8 +131,10 @@ public class Bear extends Enemy{
     }
     @Override
     public void hitOnHead(Nana nana, boolean head) {
+
         if (!setToDestroy && head){
-            Hud.addScoreNana(100);
+            Hud.addScore(500, Bear.class, false);
+            Hud.addScoreNana(500);
         } else if (!setToDestroy && !head) {
             Hud.removeLiveNana(1);
         }

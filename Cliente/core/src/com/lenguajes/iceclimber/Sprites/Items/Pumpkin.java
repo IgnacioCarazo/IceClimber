@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.Enemies.Bird;
 
 public class Pumpkin extends Fruit {
     public Pumpkin(GameScreen screen, float x, float y) {
@@ -41,8 +42,10 @@ public class Pumpkin extends Fruit {
     public void use(boolean popo) {
         if (!this.toDestroy) {
             if (popo) {
+                Hud.addScore(600, Pumpkin.class,true);
                 Hud.addScorePopo(600);
             } else {
+                Hud.addScore(600,Pumpkin.class,false);
                 Hud.addScoreNana(600);
             }
         }

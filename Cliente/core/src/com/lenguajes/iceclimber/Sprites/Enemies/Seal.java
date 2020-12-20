@@ -15,7 +15,7 @@ import com.lenguajes.iceclimber.Screens.GameScreen;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Nana;
 import com.lenguajes.iceclimber.Sprites.MainCharacters.Popo;
 
-public class Seal extends Enemy{
+public class Seal extends Enemy {
 
     private float stateTime;
     private Animation walkAnimation;
@@ -25,7 +25,7 @@ public class Seal extends Enemy{
     private boolean facingLeft;
 
     public Seal(GameScreen screen, float floor, boolean facingLeft) {
-        super(screen, floor-20, facingLeft);
+        super(screen, floor - 20, facingLeft);
         // define su velocidad dependiendo de hacia donde esta viendo y si hay bonus
         if (facingLeft) {
             if (!screen.bonus) {
@@ -66,8 +66,7 @@ public class Seal extends Enemy{
             destroyed = true;
             setRegion(new TextureRegion(screen.getAtlas().findRegion("seal_left"), 0, 0, 20, 16));
             stateTime = 0;
-        }
-        else if (!destroyed) {
+        } else if (!destroyed) {
 
             b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
@@ -99,10 +98,10 @@ public class Seal extends Enemy{
 
         PolygonShape head = new PolygonShape();
         Vector2[] vertice = new Vector2[4];
-        vertice[0] = new Vector2(-8,12).scl(1/IceClimber.PPM);
-        vertice[1] = new Vector2(8,12).scl(1/IceClimber.PPM);
-        vertice[2] = new Vector2(-3,3).scl(1/IceClimber.PPM);
-        vertice[3] = new Vector2(3,3).scl(1/IceClimber.PPM);
+        vertice[0] = new Vector2(-8, 12).scl(1 / IceClimber.PPM);
+        vertice[1] = new Vector2(8, 12).scl(1 / IceClimber.PPM);
+        vertice[2] = new Vector2(-3, 3).scl(1 / IceClimber.PPM);
+        vertice[3] = new Vector2(3, 3).scl(1 / IceClimber.PPM);
         head.set(vertice);
 
         fdef.shape = head;
@@ -111,7 +110,7 @@ public class Seal extends Enemy{
         b2body.createFixture(fdef).setUserData(this);
     }
 
-    public void draw(Batch batch){
+    public void draw(Batch batch) {
         if (!destroyed || stateTime < 1) {
             super.draw(batch);
         }
@@ -119,7 +118,8 @@ public class Seal extends Enemy{
 
     @Override
     public void hitOnHead(Popo popo, boolean head) {
-        if (!setToDestroy && head){
+        if (!setToDestroy && head) {
+            Hud.addScore(100, Seal.class, true);
             Hud.addScorePopo(100);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
@@ -127,9 +127,11 @@ public class Seal extends Enemy{
 
         setToDestroy = true;
     }
+
     @Override
     public void hitOnHead(Nana nana, boolean head) {
-        if (!setToDestroy && head){
+        if (!setToDestroy && head) {
+            Hud.addScore(100, Seal.class, false);
             Hud.addScoreNana(100);
         } else if (!setToDestroy && !head) {
             Hud.removeLiveNana(1);

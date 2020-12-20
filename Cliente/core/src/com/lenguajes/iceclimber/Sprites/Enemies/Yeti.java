@@ -120,6 +120,7 @@ public class Yeti extends Enemy{
     @Override
     public void hitOnHead(Popo popo, boolean head) {
         if (!setToDestroy && head){
+            Hud.addScore(300,Yeti.class,true);
             Hud.addScorePopo(300);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
@@ -129,9 +130,9 @@ public class Yeti extends Enemy{
     }
     @Override
     public void hitOnHead(Nana nana, boolean head) {
-        System.out.println("NANAHIT");
         if (!setToDestroy && head){
-            Hud.addScoreNana(100);
+            Hud.addScore(300,Yeti.class,false);
+            Hud.addScoreNana(300);
         } else if (!setToDestroy && !head) {
             Hud.removeLiveNana(1);
         }

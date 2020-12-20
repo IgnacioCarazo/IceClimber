@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.lenguajes.iceclimber.IceClimber;
 import com.lenguajes.iceclimber.Scenes.Hud;
 import com.lenguajes.iceclimber.Screens.GameScreen;
+import com.lenguajes.iceclimber.Sprites.Enemies.Bird;
 
 public class Onion extends Fruit{
     public Onion(GameScreen screen, float x, float y) {
@@ -41,10 +42,14 @@ public class Onion extends Fruit{
 
     @Override
     public void use(boolean popo) {
+
         if (!this.toDestroy) {
             if (popo) {
+                Hud.addScore(300, Onion.class,true);
                 Hud.addScorePopo(300);
-            } else {
+            }
+            if (!popo) {
+                Hud.addScore(300,Onion.class,false);
                 Hud.addScoreNana(300);
             }
         }

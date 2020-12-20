@@ -1,5 +1,6 @@
 package com.lenguajes.iceclimber.Screens;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -95,6 +96,7 @@ public class GameScreen implements Screen, Runnable{
         gamecam = new OrthographicCamera();
         gameport = new FitViewport(IceClimber.GAMEWIDTH / IceClimber.PPM, IceClimber.GAMEHEIGHT / IceClimber.PPM, gamecam);
         hud = new Hud(game.batch);
+
 
         // inicializa el mapa
         maploader = new TmxMapLoader();
@@ -233,7 +235,22 @@ public class GameScreen implements Screen, Runnable{
 
         if (MainMenuScreen.players == 1) {
             popoPlayer.update(dt);
+            if (Hud.getPopoLives() < 1) {
+                game.setScreen(new GameOverScreen(game, hud));
+            }
+            if (teroFinal.destroyed) {
+                game.setScreen(new GameOverScreen(game, hud));
+            }
         } else {
+            if (Hud.getPopoLives() < 1) {
+                game.setScreen(new GameOverScreen(game, hud));
+            }
+            if (Hud.getNanaLives() < 1) {
+                game.setScreen(new GameOverScreen(game, hud));
+            }
+            if (teroFinal.destroyed) {
+                game.setScreen(new GameOverScreen(game, hud));
+            }
             popoPlayer.update(dt);
             nanaPlayer.update(dt);
         }
@@ -306,7 +323,7 @@ public class GameScreen implements Screen, Runnable{
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bird.class, true));
+            game.setScreen(new GameOverScreen(game, hud));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
             this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Yeti.class, true));
@@ -320,8 +337,17 @@ public class GameScreen implements Screen, Runnable{
         if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
             this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Pterodactyl.class, true));
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bird.class, true));
+        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
             this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Onion.class));
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.G)) {
+            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Carrot.class));
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.H)) {
+            this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Pumpkin.class));
         }
 
 
@@ -344,6 +370,7 @@ public class GameScreen implements Screen, Runnable{
 
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
+
         // dibuja los jugadores
         if (MainMenuScreen.players == 1) {
             popoPlayer.draw(game.batch);
@@ -363,6 +390,7 @@ public class GameScreen implements Screen, Runnable{
         }
         game.batch.end();
         hud.stage.draw();
+
 
 
     }

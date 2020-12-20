@@ -15,8 +15,6 @@ public class DesktopLauncher {
 		config.forceExit = false;
 		new LwjglApplication(new IceClimber(), config);
 
-
-
 	}
 }
 

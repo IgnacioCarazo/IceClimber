@@ -37,15 +37,15 @@ public class WorldContactListener implements ContactListener {
                 if (fixA.getFilterData().categoryBits == IceClimber.PLAYER_HEAD_BIT) {
                     if (fixA.getUserData() instanceof Popo) {
                         ((InteractiveTileObject) fixB.getUserData()).onHeadHit(true);
-                    } else {
+                    } else if (fixA.getUserData() instanceof Nana){
                         ((InteractiveTileObject) fixB.getUserData()).onHeadHit(false);
                     }
 
                 } else {
-                    if (fixA.getUserData() instanceof Popo) {
-                        ((InteractiveTileObject) fixA.getUserData()).onHeadHit(false);
-                    } else {
+                    if (fixB.getUserData() instanceof Popo) {
                         ((InteractiveTileObject) fixA.getUserData()).onHeadHit(true);
+                    } else if (fixB.getUserData() instanceof Nana){
+                        ((InteractiveTileObject) fixA.getUserData()).onHeadHit(false);
                     }
 
                 }
@@ -102,7 +102,7 @@ public class WorldContactListener implements ContactListener {
                 } else if (fixB.getUserData() instanceof Fruit) {
                     if (fixA.getUserData() instanceof Popo) {
                         ((Fruit) fixB.getUserData()).use(true);
-                    } else if (fixB.getUserData() instanceof Nana) {
+                    } else if (fixA.getUserData() instanceof Nana) {
                         ((Fruit) fixB.getUserData()).use(false);
                     }
                 }

@@ -20,8 +20,8 @@ public class Pterodactyl extends Enemy{
     private float stateTime;
     private Animation walkAnimation;
     private Array<TextureRegion> frames;
-    private boolean setToDestroy;
-    private boolean destroyed;
+    public boolean setToDestroy;
+    public boolean destroyed;
     private boolean facingLeft;
 
     public Pterodactyl(GameScreen screen, float floor, boolean facingLeft) {
@@ -152,6 +152,7 @@ public class Pterodactyl extends Enemy{
     @Override
     public void hitOnHead(Popo popo, boolean head) {
         if (!setToDestroy && head){
+            Hud.addScore(1500,Pterodactyl.class,true);
             Hud.addScorePopo(1500);
         } else if (!setToDestroy && !head) {
             Hud.removeLivePopo(1);
@@ -162,6 +163,7 @@ public class Pterodactyl extends Enemy{
     @Override
     public void hitOnHead(Nana nana, boolean head) {
         if (!setToDestroy && head){
+            Hud.addScore(1500,Pterodactyl.class,false);
             Hud.addScoreNana(1500);
         } else if (!setToDestroy && !head) {
             Hud.removeLiveNana(1);
