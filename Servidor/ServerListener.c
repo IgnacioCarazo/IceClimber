@@ -11,6 +11,17 @@
 
 void* listenProced(void* arg) {
 
+	/*
+	Entradas:
+	item - Puntero necesario para permitir el formato de funcion thread de pthread
+	Salida: puntero necesario para permitir el formato de funcion de thread de pthread
+	Descripcion:
+	Esta funcion es la encargada de Inicializar la comunicacion por medio de sockets, utilizando la libreria Winsock2 para abrir el puerto o socket correcto
+	estableciendo el socket como un socked de escucha y generando una escructura correcta del socked t bindeandolo para determinar el error que permita identificar
+	si algo falla. Una vez prepado el socked, se espera a que un cliente entre para conciliar una comunicacion correcta por medio de Json. Esta funcion recibe, analiza, 
+	prepara y envia los mensajes por medio de las funciones en JsonHandler.c y la libreria Json-c para mantener un standard correcto de Json.
+	*/
+
 	WSADATA wsData;
 	SOCKET listening;
 	struct sockaddr_in server;
@@ -126,6 +137,15 @@ void* listenProced(void* arg) {
 }
 
 int main(int argc, char* argv[]) {
+
+	/*
+	Entradas: entradas standard de Main de 
+	Salida: int que permite indetificar errores (Standard de C)
+	Descripcion:
+	Esta funcion es la encargada de generar los threads que permiten generar una ejecucion correcta del servidor de manera que 
+	tanto la comunicacion como la consola son habiles al mismo tiempo, el pntero lis es el puntero que es generado por la consola para crear items en el 
+	juego de manera que el ID permite identificar el contexto en que van a ser utilizados los valores del array que representa el puntero
+	*/
 
 	/*asignar la lista org
 	siempre que se tenga un ID != algun numero de [1-8] no se debe crear nada

@@ -6,6 +6,19 @@
 //TEC\Compiladores Interpretes blah blah\Proyecto\tareas de Lenguajes\IceClimber\Servidor
 
 void crearBicho(int* item, int id) {
+
+	/*
+	Entradas:
+	item -Puntero con la direccion de memoria de la lista creacionar
+	id - entero relacionado al item que esta por crearse
+	Salida: nada
+	Descripcion:
+	Esta funcion es la encargada de determinar donde se van a crear los items dentro del juego, esta selecciona la posicion correcta en Y
+	dependiendo del nivel en el que se desea crear El enemigo deseado deseada, de manera tal que pone en la segunda casilla del array 
+	la DIRECCION en la que se va a crear al enemigo, de manera tal que cuando se crea, este se va a mover hacia la direccion dada en donde 
+	0 lo dirigira a la Derecha y 1 a la izquierda .
+	*/
+
 	printf("_____________|Posicionar enemigo|_____________\n"
 		   "direccion a la que ve       Ingrese en nivel \n"
 			"_____________________________________________\n"
@@ -61,6 +74,16 @@ void crearBicho(int* item, int id) {
 }
 
 void crearFruta(int* item, int id) {
+
+	/*
+	Entradas: 
+	item -Puntero con la direccion de memoria de la lista creacionar
+	id - entero relacionado al item que esta por crearse
+	Salida: nada
+	Descripcion:
+	Esta funcion es la encargada de determinar donde se van a crear los items dentro del juego, esta selecciona la posicion correcta en Y
+	dependiendo del nivel en el que se desea crear la Fruta deseada, de manera tal que pone en la segunda casilla del array la posicion  en X deseada
+	*/
 	printf("_____________|Posicionar Fruta|____________\n"
 		"Ingrese las posiciones X y Nivel respectivamente \n"
 		"Separados por un espacio\n"
@@ -114,6 +137,15 @@ void crearFruta(int* item, int id) {
 }
 
 void consoleMenu(int* item) {
+	/*
+	Entradas: Pointer que va a contener 
+	Salida: nada
+	Descripcion:
+	Esta funcion hace un recorrido de entradas por medio de la terminal en la cual recibe los valores necesarios 
+	para cada item posible de crear dentro de ICE Climber, una vez seleccionado un ID correcto de la lista dada,
+	redirige los usuarios a un menu especializado dependiendo de si es fruta o enemigo, con diferentes limitantes.
+	*/
+
 	int uno = 1;
 
 	while (uno == 1)

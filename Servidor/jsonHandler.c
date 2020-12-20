@@ -1,6 +1,17 @@
 #include<stdio.h>
 #include<json-c/json.h>
 int jsonWriter(char *ID,int Listitems[], char *lvl) {
+
+    /*
+    Entradas:
+    ID -identificador de cliente
+    Listitems - lista generadora de items
+    lvl - flag que permite identificar el estado del juego actual
+    Salida: interger que funciona como flag de identificacion
+    Descripcion:
+    Esta funcion es la encargada de genrar un Json a base de las entradas dadas por la funcion listeningproced() la cual se encarga de 
+    toda la comunicacion con el cliente, la informacion generada es cargada en el buffer
+    */
     /*Creating a json object*/
     json_object* jobj = json_object_new_object();
 
@@ -31,6 +42,15 @@ int jsonWriter(char *ID,int Listitems[], char *lvl) {
     return 1;
 }
 int jsonReader(char *buffer) {
+    /*
+    Entradas:
+    Puntero que contiene al buffer
+    Salida: interger que funciona como flag de identificacion
+    Descripcion:
+    Esta funcion es la encargada de deserializar el Json de manera tal que pueden ser  manipulados por la logica del servidor dentro de
+    listening procedure.
+    */
+
 	//FILE* fp;
 	//char buffer[1024];
     struct json_object *parsed_json;
