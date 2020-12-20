@@ -75,8 +75,11 @@ public class MainMenuScreen implements Screen {
                 && IceClimber.MENUHEIGHT - Gdx.input.getY() > PLAY_BUTTON_Y && IceClimber.MENUHEIGHT - Gdx.input.getY() < PLAY_BUTTON_Y + 100) {
                 game.batch.draw(playButton, PLAY_BUTTON_X,PLAY_BUTTON_Y + 10);
             if (Gdx.input.isTouched() && players != 0) {
-                game.setScreen(new GameScreen(game, false));
+                game.setScreen(new GameScreen(game, false, true, players));
 
+            }
+            if (Gdx.input.isTouched() && players == 0) {
+                game.setScreen(new GameScreen(game, false, false, players));
             }
         } else {
             game.batch.draw(playButton, PLAY_BUTTON_X,PLAY_BUTTON_Y);

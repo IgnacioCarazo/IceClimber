@@ -44,6 +44,9 @@ public class GameScreen implements Screen, Runnable{
     public static final int PLAYER_PIXEL_HEIGHT = 30;
 
 
+    public int players;
+    public boolean host;
+
     IceClimber game;
     private TextureAtlas atlas;
     private TextureAtlas fruitAtlas;
@@ -67,6 +70,7 @@ public class GameScreen implements Screen, Runnable{
     private Popo popoPlayer;
     private Nana nanaPlayer;
 
+
     //musica del juego
     private Music music;
 
@@ -82,11 +86,12 @@ public class GameScreen implements Screen, Runnable{
      * Constructor de la clase GameScreen. Aqui se inicializa lo necesario para que se inicie el juego
      * @param game Como todas las pantallas se necesita un parametro de la clase Game, en este caso es IceClimber
      */
-    public GameScreen(IceClimber game, boolean bonus) {
+    public GameScreen(IceClimber game, boolean bonus, boolean host, int players) {
         //crea un hilo para iniciar la conexion cliente-servidor
         Thread t = new Thread(this);
         t.start();
-
+        this.players = players;
+        this.host = host;
         this.game = game;
         this.bonus = bonus;
         // Los atlas se utilizan para hacer las animaciones de los sprites
@@ -131,16 +136,19 @@ public class GameScreen implements Screen, Runnable{
 
 
         //Aqui se verifica si el juego va a tener un jugador o dos
-        if (MainMenuScreen.players == 1) {
+
+        if (this.players == 1) {
             popoPlayer = new Popo(this);
         } else {
             popoPlayer = new Popo(this);
             nanaPlayer = new Nana(this);
         }
 
+
+
         world.setContactListener(new WorldContactListener());
 
-        // floor 900 boss
+
 
         teroFinal = new Pterodactyl(this, 760, true);
 
@@ -233,7 +241,7 @@ public class GameScreen implements Screen, Runnable{
         handleSpawningEnemies();
         world.step(1 / 60f, 6, 2);
 
-        if (MainMenuScreen.players == 1) {
+        if (this.players == 1) {
             popoPlayer.update(dt);
             if (Hud.getPopoLives() < 1) {
                 game.setScreen(new GameOverScreen(game, hud));
@@ -256,10 +264,10 @@ public class GameScreen implements Screen, Runnable{
         }
 
         // Si la posicion de popo aumenta arriba de 500 cambia de posicion la camara
-        if (MainMenuScreen.players == 2) {
+        if (this.players == 2) {
             if ((popoPlayer.b2body.getPosition().y * 100 > 700 | nanaPlayer.b2body.getPosition().y * 100 > 700) && !bonus) {
                 music.dispose();
-                game.setScreen(new GameScreen(game, true));
+                game.setScreen(new GameScreen(game, true, this.host, this.players));
             }
             if (popoPlayer.b2body.getPosition().y * 100 > 450 && nanaPlayer.b2body.getPosition().y * 100 > 450) {
                 gamecam.position.set(gameport.getWorldWidth() / 2, (gameport.getWorldHeight() + 9) / 2, 0);
@@ -274,7 +282,7 @@ public class GameScreen implements Screen, Runnable{
             }
             if (popoPlayer.b2body.getPosition().y * 100 > 700 && !bonus) {
                 music.dispose();
-                game.setScreen(new GameScreen(game, true));
+                game.setScreen(new GameScreen(game, true, this.host, this.players));
             }
         }
 
@@ -300,45 +308,48 @@ public class GameScreen implements Screen, Runnable{
      *           funcionaria diferente dependiendo del hardware.
      */
     private void handleInput(float dt) {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.W) && popoPlayer.currentState != Popo.State.JUMPING && popoPlayer.currentState != Popo.State.FALLING) {
-            popoPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), popoPlayer.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.D) && popoPlayer.b2body.getLinearVelocity().x <= 2) {
+        if (this.host) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.W) && popoPlayer.currentState != Popo.State.JUMPING && popoPlayer.currentState != Popo.State.FALLING) {
+                popoPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), popoPlayer.b2body.getWorldCenter(), true);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.D) && popoPlayer.b2body.getLinearVelocity().x <= 2) {
 
-            popoPlayer.b2body.applyLinearImpulse(new Vector2(0.1f, 0), popoPlayer.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.A) && popoPlayer.b2body.getLinearVelocity().x >= -2) {
-            popoPlayer.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), popoPlayer.b2body.getWorldCenter(), true);
+                popoPlayer.b2body.applyLinearImpulse(new Vector2(0.1f, 0), popoPlayer.b2body.getWorldCenter(), true);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.A) && popoPlayer.b2body.getLinearVelocity().x >= -2) {
+                popoPlayer.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), popoPlayer.b2body.getWorldCenter(), true);
+            }
+
+            if (this.players == 2) {
+                if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && nanaPlayer.currentState != Nana.State.JUMPING && nanaPlayer.currentState != Nana.State.FALLING) {
+                    nanaPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), nanaPlayer.b2body.getWorldCenter(), true);
+                }
+                if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && nanaPlayer.b2body.getLinearVelocity().x <= 2) {
+                    nanaPlayer.b2body.applyLinearImpulse(new Vector2(0.1f, 0), nanaPlayer.b2body.getWorldCenter(), true);
+                }
+                if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && nanaPlayer.b2body.getLinearVelocity().x >= -2) {
+                    nanaPlayer.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), nanaPlayer.b2body.getWorldCenter(), true);
+                }
+            }
         }
 
-        if (MainMenuScreen.players == 2) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.UP) && nanaPlayer.currentState != Nana.State.JUMPING && nanaPlayer.currentState != Nana.State.FALLING) {
-                nanaPlayer.b2body.applyLinearImpulse(new Vector2(0, 4.5f), nanaPlayer.b2body.getWorldCenter(), true);
-            }
-            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && nanaPlayer.b2body.getLinearVelocity().x <= 2) {
-                nanaPlayer.b2body.applyLinearImpulse(new Vector2(0.1f, 0), nanaPlayer.b2body.getWorldCenter(), true);
-            }
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && nanaPlayer.b2body.getLinearVelocity().x >= -2) {
-                nanaPlayer.b2body.applyLinearImpulse(new Vector2(-0.1f, 0), nanaPlayer.b2body.getWorldCenter(), true);
-            }
-        }
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
             game.setScreen(new GameOverScreen(game, hud));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Yeti.class, true));
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 700), Yeti.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.U)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bear.class, true));
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 700), Bear.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Seal.class, true));
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 700), Seal.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Pterodactyl.class, true));
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 680), Pterodactyl.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
-            this.spawnEnemy(new EnemyDef(new Vector2(10, 30), Bird.class, true));
+            this.spawnEnemy(new EnemyDef(new Vector2(10, 640), Bird.class, true));
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
             this.spawnFruit(new FruitDef(new Vector2(50 / IceClimber.PPM, 100 / IceClimber.PPM), Onion.class));
@@ -372,7 +383,7 @@ public class GameScreen implements Screen, Runnable{
         game.batch.begin();
 
         // dibuja los jugadores
-        if (MainMenuScreen.players == 1) {
+        if (this.players == 1) {
             popoPlayer.draw(game.batch);
         } else {
             nanaPlayer.draw(game.batch);
